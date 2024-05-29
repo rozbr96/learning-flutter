@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
-class BaseInput extends StatelessWidget {
+class BaseInputState extends State {
   final String label;
   final String hintText;
   final bool obscureText;
+  Function(String)? onChanged;
 
-  const BaseInput({
-    super.key,
+  BaseInputState({
     required this.label,
     required this.hintText,
+    this.onChanged,
     this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       obscureText: obscureText,
       style: const TextStyle(
         color: primaryForegroundColor,
