@@ -1,36 +1,28 @@
-// ignore_for_file: no_logic_in_create_state
-
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/login.dart';
 import 'package:learning_flutter/widgets/inputs/base.dart';
 import 'package:provider/provider.dart';
 
-class PasswordInputstate extends BaseInputState {
-  PasswordInputstate({
-    required super.label,
-    required super.hintText,
-    required super.obscureText,
-  });
+class _PasswordInputstate extends BaseInputState {
+  _PasswordInputstate()
+      : super(label: 'Password', hintText: 'Password', obscureText: true);
+
+  @override
+  void initState() {
+    super.initState();
+
+    onChanged = (value) {
+      Provider.of<LoginModel>(
+        super.context,
+        listen: false,
+      ).setPassword(value);
+    };
+  }
 }
 
 class PasswordInput extends StatefulWidget {
   const PasswordInput({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    var passwordInputState = PasswordInputstate(
-      label: 'Password',
-      hintText: 'Password',
-      obscureText: true,
-    );
-
-    passwordInputState.onChanged = (value) {
-      Provider.of<LoginModel>(
-        passwordInputState.context,
-        listen: false,
-      ).setPassword(value);
-    };
-
-    return passwordInputState;
-  }
+  State<StatefulWidget> createState() => _PasswordInputstate();
 }
