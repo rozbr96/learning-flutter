@@ -9,6 +9,7 @@ class PasswordInputstate extends BaseInputState {
   PasswordInputstate({
     required super.label,
     required super.hintText,
+    required super.obscureText,
   });
 }
 
@@ -20,6 +21,7 @@ class PasswordInput extends StatefulWidget {
     var passwordInputState = PasswordInputstate(
       label: 'Password',
       hintText: 'Password',
+      obscureText: true,
     );
 
     passwordInputState.onChanged = (value) {
