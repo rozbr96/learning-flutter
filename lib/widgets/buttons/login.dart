@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:learning_flutter/models/login.dart';
 import 'package:learning_flutter/utils/colors.dart';
+import 'package:learning_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class LoginButton extends StatelessWidget {
@@ -10,12 +12,12 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilledButton(
       onPressed: () {
-        String email =
-            Provider.of<LoginModel>(context, listen: false).getEmail();
-        String password =
-            Provider.of<LoginModel>(context, listen: false).getPassword();
+        Map<String, String> loginData =
+            Provider.of<LoginModel>(context, listen: false).getData();
 
-        print({email, password});
+        http
+            .post(Uri.parse(API_LOGIN_ENDPOINT), body: loginData)
+            .then((value) => print(value.body));
       },
       style: const ButtonStyle(
         fixedSize: MaterialStatePropertyAll(Size.fromHeight(45)),
