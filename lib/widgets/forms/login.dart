@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:learning_flutter/models/login.dart';
+import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/widgets/buttons/login.dart';
 import 'package:learning_flutter/widgets/buttons/recovery.dart';
 import 'package:learning_flutter/widgets/inputs/email.dart';

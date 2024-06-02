@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:learning_flutter/models/login.dart';
+import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/utils/colors.dart';
 import 'package:learning_flutter/utils/constants.dart';
 import 'package:provider/provider.dart';
