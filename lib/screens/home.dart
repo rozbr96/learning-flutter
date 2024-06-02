@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/utils/colors.dart';
+import 'package:learning_flutter/widgets/buttons/back.dart';
 import 'package:learning_flutter/widgets/cards/exam_brief.dart';
 import 'package:learning_flutter/widgets/inputs/search.dart';
 import 'package:provider/provider.dart';
@@ -18,15 +19,7 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.notifications),
           )
         ],
-        leading: IconButton(
-          icon: const Icon(Icons.keyboard_arrow_left),
-          style: const ButtonStyle(
-            iconColor: MaterialStatePropertyAll(primaryBackgroundColor),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: const CustomBackButton(),
         title: const Text(
           'My Exams',
           style: TextStyle(
