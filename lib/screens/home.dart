@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/utils/colors.dart';
 import 'package:learning_flutter/widgets/buttons/back.dart';
+import 'package:learning_flutter/widgets/buttons/notifications.dart';
 import 'package:learning_flutter/widgets/cards/exam_brief.dart';
 import 'package:learning_flutter/widgets/inputs/search.dart';
 import 'package:provider/provider.dart';
@@ -13,12 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications),
-          )
-        ],
+        actions: const [NotificationsButton()],
         leading: const CustomBackButton(),
         title: const Text(
           'My Exams',
