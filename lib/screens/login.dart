@@ -7,12 +7,22 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        LoginForm(),
-        SignUpText(),
-      ],
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('assets/images/login-bg.jpg'),
+          ),
+        ),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            LoginForm(),
+            SignUpText(),
+          ],
+        ),
+      ),
     );
   }
 }

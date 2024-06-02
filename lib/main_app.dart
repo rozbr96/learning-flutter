@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:learning_flutter/models/provider/exams.dart';
+import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/login.dart';
-import 'package:learning_flutter/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: primaryBackgroundColor,
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage('assets/images/login-bg.jpg'),
-            ),
-          ),
-          child: const LoginScreen(),
-        ),
+    return MultiProvider(
+      providers: [
+        Provider<LoginModel>(create: (_) => LoginModel()),
+        Provider<ExamsModel>(create: (_) => ExamsModel()),
+      ],
+      child: const MaterialApp(
+        home: LoginScreen(),
       ),
     );
   }
