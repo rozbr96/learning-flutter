@@ -41,7 +41,10 @@ class LoginButton extends StatelessWidget {
               );
             });
           } else {
-            dismissDialog(context);
+            showErrorDialog(
+              context,
+              message: 'Usuário e/ou senha incorreto(s)',
+            );
           }
         });
       },
