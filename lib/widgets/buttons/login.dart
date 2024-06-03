@@ -7,6 +7,7 @@ import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
 import 'package:learning_flutter/utils/colors.dart';
 import 'package:learning_flutter/utils/constants.dart';
+import 'package:learning_flutter/utils/dialogs.dart';
 import 'package:provider/provider.dart';
 
 class LoginButton extends StatelessWidget {
@@ -16,6 +17,8 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilledButton(
       onPressed: () {
+        showLoadingDialog(context);
+
         Map<String, String> loginData = context.read<LoginModel>().getData();
 
         http
@@ -31,11 +34,14 @@ class LoginButton extends StatelessWidget {
                   .read<ExamsModel>()
                   .setExamsFromJSON(jsonDecode(response.body));
 
+              dismissDialog(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const HomeScreen()),
               );
             });
+          } else {
+            dismissDialog(context);
           }
         });
       },
