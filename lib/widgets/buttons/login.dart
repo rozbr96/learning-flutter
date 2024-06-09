@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
+import 'package:learning_flutter/utils/api.dart';
 import 'package:learning_flutter/utils/colors.dart';
-import 'package:learning_flutter/utils/constants.dart';
 import 'package:learning_flutter/utils/dialogs.dart';
 import 'package:provider/provider.dart';
 
@@ -21,31 +18,29 @@ class LoginButton extends StatelessWidget {
 
         Map<String, String> loginData = context.read<LoginModel>().getData();
 
-        http
-            .post(Uri.parse(API_LOGIN_ENDPOINT), body: loginData)
-            .then((response) {
-          if (response.statusCode == 200) {
-            http.get(Uri.parse(API_EXAMS_ENDPOINT), headers: {
-              'uid': response.headers['uid']!,
-              'client': response.headers['client']!,
-              'access-token': response.headers['access-token']!,
-            }).then((response) {
-              context
-                  .read<ExamsModel>()
-                  .setExamsFromJSON(jsonDecode(response.body));
+        API.getInstance().login(loginData).then((_) {
+          return API.getInstance().listExams().then((exams) {
+            context.read<ExamsModel>().setExams(exams);
 
-              dismissDialog(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
-            });
-          } else {
-            showErrorDialog(
+            dismissDialog(context);
+            Navigator.push(
               context,
-              message: 'Usuário e/ou senha incorreto(s)',
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
             );
+          });
+        }).catchError((error) {
+          String message;
+
+          switch (error) {
+            case AuthenticationError _:
+              message = 'Usuário e/ou senha incorreto(s)';
+              break;
+
+            default:
+              message = 'Erro ao se conectar com o servidor';
           }
+
+          showErrorDialog(context, message: message);
         });
       },
       style: const ButtonStyle(

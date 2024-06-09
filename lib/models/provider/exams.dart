@@ -6,6 +6,10 @@ class ExamsModel {
   getExam(index) => _exams[index];
   getExamsCount() => _exams.length;
 
+  setExams(List<Exam> exams) {
+    _exams = exams;
+  }
+
   setExamsFromJSON(List json) {
     _exams = [];
 
