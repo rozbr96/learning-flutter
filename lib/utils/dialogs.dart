@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:learning_flutter/widgets/dialogs/error.dart';
 import 'package:learning_flutter/widgets/dialogs/loading.dart';
 
+class DialogArguments {
+  final bool isDialog;
+
+  DialogArguments(this.isDialog);
+}
+
+class DialogRouteSettings extends RouteSettings {
+  DialogRouteSettings() : super(arguments: DialogArguments(true));
+}
+
 dismissDialog(BuildContext context) {
-  return Navigator.of(context)
-      .popUntil((route) => !route.settings.name!.endsWith('_dialog'));
+  return Navigator.of(context).popUntil(
+    (route) => route.settings.arguments is DialogArguments
+        ? !(route.settings.arguments as DialogArguments).isDialog
+        : true,
+  );
 }
 
 showErrorDialog(BuildContext context, {String? message}) {
@@ -12,7 +25,7 @@ showErrorDialog(BuildContext context, {String? message}) {
     context: context,
     barrierDismissible: false,
     builder: (context) => ErrorDialog(message: message, context: context),
-    routeSettings: const RouteSettings(name: 'error_dialog'),
+    routeSettings: DialogRouteSettings(),
   );
 }
 
@@ -21,6 +34,6 @@ showLoadingDialog(BuildContext context) {
     context: context,
     barrierDismissible: false,
     builder: (context) => const LoadingDialog(),
-    routeSettings: const RouteSettings(name: 'loading_dialog'),
+    routeSettings: DialogRouteSettings(),
   );
 }

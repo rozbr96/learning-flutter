@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/exam.dart';
 
 class AuthenticationError extends Error {}
@@ -9,9 +10,10 @@ class ConnectionError extends Error {}
 class API {
   static API? _instance;
 
-  static String apiHost = 'http://localhost:3000';
+  static String apiHost = 'http://localhost:10000';
   static String apiLoginEndpoint = '/auth/sign_in';
   static String apiExamsEndpoint = '/api/v1/exams';
+  static String Function(int) apiExamEndpoint = (id) => '/api/v1/exams/$id';
 
   late Dio _dio;
   late Map<String, String> _authorizationHeaders;
@@ -58,6 +60,24 @@ class API {
 
           case 401:
             throw AuthenticationError();
+
+          default:
+            throw ConnectionError();
+        }
+      },
+    );
+  }
+
+  Future<Exam> getExam(int examId) async {
+    return _dio
+        .get(apiExamEndpoint(examId),
+            options: Options(headers: _authorizationHeaders))
+        .then(
+      (response) {
+        switch (response.statusCode) {
+          case 200:
+            debugPrint(response.data.toString());
+            return Exam.fromJSON(response.data);
 
           default:
             throw ConnectionError();

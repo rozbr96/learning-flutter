@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/exam.dart';
+import 'package:learning_flutter/models/provider/exam.dart';
+import 'package:learning_flutter/screens/exam_details.dart';
+import 'package:learning_flutter/utils/api.dart';
 import 'package:learning_flutter/utils/colors.dart';
+import 'package:learning_flutter/utils/dialogs.dart';
+import 'package:provider/provider.dart';
 
 class ExamBriefCard extends StatelessWidget {
   final Exam exam;
@@ -105,7 +110,24 @@ class ExamBriefCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showLoadingDialog(context);
+
+                        API.getInstance().getExam(exam.id).then(
+                          (exam) {
+                            Provider.of<ExamModel>(context, listen: false)
+                                .setExam(exam);
+
+                            dismissDialog(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ExamDetailsScreen(),
+                              ),
+                            );
+                          },
+                        );
+                      },
                       style: const ButtonStyle(
                         foregroundColor:
                             MaterialStatePropertyAll(primaryForegroundColor),
