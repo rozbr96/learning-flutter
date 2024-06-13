@@ -23,16 +23,15 @@ class ExamDetailsResultsInfoCard extends StatelessWidget {
                 'Nenhum teste para o exame especificado',
                 style: TextStyle(fontWeight: FontWeight.bold),
               )
-            : Expanded(
-                child: ListView.builder(
-                  itemCount: exam.examResults.length,
-                  itemBuilder: (context, index) {
-                    return ExamResultCard(
-                      exam: exam,
-                      result: exam.examResults[index],
-                    );
-                  },
-                ),
+            : ListView.builder(
+                shrinkWrap: true,
+                itemCount: exam.examResults.length,
+                itemBuilder: (context, index) {
+                  return ExamResultCard(
+                    exam: exam,
+                    result: exam.examResults[index],
+                  );
+                },
               )
       ],
     );

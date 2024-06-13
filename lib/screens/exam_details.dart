@@ -21,49 +21,49 @@ class ExamDetailsScreen extends StatelessWidget {
         title: const ExamDetailsTitleBar(),
         centerTitle: true,
       ),
-      body: Consumer<ExamModel>(
-        builder: (_, examModel, __) => Center(
+      body: SingleChildScrollView(
+        child: Center(
           child: FractionallySizedBox(
             widthFactor: 0.8,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          examModel.getExam().id.toString(),
-                          style: const TextStyle(
-                            color: primaryForegroundColor,
-                            fontWeight: FontWeight.bold,
+            child: Consumer<ExamModel>(
+              builder: (_, examModel, __) => Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            examModel.getExam().id.toString(),
+                            style: const TextStyle(
+                              color: primaryForegroundColor,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          examModel.getLab().name,
-                          style: const TextStyle(
-                            color: primaryBackgroundColor,
-                            fontWeight: FontWeight.bold,
+                          Text(
+                            examModel.getLab().name,
+                            style: const TextStyle(
+                              color: primaryBackgroundColor,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      examModel.getExam().formattedDate(),
-                      style: const TextStyle(
-                        color: primaryBackgroundColor,
-                        fontWeight: FontWeight.bold,
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                ExamDetailsPatientInfoCard(patient: examModel.getPatient()),
-                ExamDetailsDoctorInfoCard(doctor: examModel.getDoctor()),
-                Expanded(
-                  child: ExamDetailsResultsInfoCard(exam: examModel.getExam()),
-                ),
-              ],
+                      Text(
+                        examModel.getExam().formattedDate(),
+                        style: const TextStyle(
+                          color: primaryBackgroundColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  ExamDetailsPatientInfoCard(patient: examModel.getPatient()),
+                  ExamDetailsDoctorInfoCard(doctor: examModel.getDoctor()),
+                  ExamDetailsResultsInfoCard(exam: examModel.getExam())
+                ],
+              ),
             ),
           ),
         ),
