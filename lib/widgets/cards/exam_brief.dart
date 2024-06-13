@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/exam.dart';
 import 'package:learning_flutter/models/provider/exam.dart';
 import 'package:learning_flutter/screens/exam_details.dart';
@@ -45,10 +46,10 @@ class ExamBriefCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Text(
-                      'Laboratório',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.lab,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Expanded(
@@ -63,10 +64,10 @@ class ExamBriefCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Text(
-                      'Médico',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.doctor,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                   Expanded(
@@ -88,21 +89,21 @@ class ExamBriefCard extends StatelessWidget {
                         backgroundColor:
                             MaterialStatePropertyAll(primaryForegroundColor),
                       ),
-                      child: const Text('Crea...')),
+                      child: Text(AppLocalizations.of(context)!.create)),
                   FilledButton(
                       onPressed: () {},
                       style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(primaryForegroundColor),
                       ),
-                      child: const Text('Crea...')),
+                      child: Text(AppLocalizations.of(context)!.create)),
                   FilledButton(
                       onPressed: () {},
                       style: const ButtonStyle(
                         backgroundColor:
                             MaterialStatePropertyAll(primaryForegroundColor),
                       ),
-                      child: const Text('Crea...')),
+                      child: Text(AppLocalizations.of(context)!.create)),
                 ],
               ),
               Row(
@@ -134,9 +135,9 @@ class ExamBriefCard extends StatelessWidget {
                         backgroundColor:
                             MaterialStatePropertyAll(tertiaryBackgroundColor),
                       ),
-                      child: const Text(
-                        'Details',
-                        style: TextStyle(
+                      child: Text(
+                        AppLocalizations.of(context)!.details,
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                         ),
                       ),

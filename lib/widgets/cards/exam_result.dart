@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/exam.dart';
 import 'package:learning_flutter/models/exam_result.dart';
 import 'package:learning_flutter/utils/colors.dart';
@@ -25,22 +26,22 @@ class ExamResultCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 100,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Nome',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          AppLocalizations.of(context)!.name,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Reference',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          AppLocalizations.of(context)!.reference,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Result',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          AppLocalizations.of(context)!.result,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

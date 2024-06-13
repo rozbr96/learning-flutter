@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/dialogs.dart';
 
 class ErrorDialog extends AlertDialog {
@@ -10,14 +11,15 @@ class ErrorDialog extends AlertDialog {
     this.message,
     required this.context,
   }) : super(
-          title: const Row(
+          title: Row(
             children: [
-              Icon(Icons.error_sharp, color: Colors.red),
-              Text('Erro', style: TextStyle(color: Colors.red)),
+              const Icon(Icons.error_sharp, color: Colors.red),
+              Text(AppLocalizations.of(context)!.error,
+                  style: const TextStyle(color: Colors.red)),
             ],
           ),
           content: Text(
-            message ?? 'Erro',
+            message ?? AppLocalizations.of(context)!.error,
             textAlign: TextAlign.center,
           ),
           actions: [
@@ -25,7 +27,7 @@ class ErrorDialog extends AlertDialog {
               onPressed: () {
                 dismissDialog(context);
               },
-              child: const Text('OK'),
+              child: Text(AppLocalizations.of(context)!.ok),
             ),
           ],
         );

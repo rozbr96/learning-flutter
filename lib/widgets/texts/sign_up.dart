@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class SignUpText extends StatelessWidget {
@@ -6,18 +7,18 @@ class SignUpText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const InkWell(
+    return InkWell(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Does not have an acccount?',
-            style: TextStyle(color: tertiaryForegroundColor),
+            AppLocalizations.of(context)!.noAccount,
+            style: const TextStyle(color: tertiaryForegroundColor),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(
-            'Sign up',
-            style: TextStyle(
+            AppLocalizations.of(context)!.signUp,
+            style: const TextStyle(
               color: secondaryForegroundColor,
               fontWeight: FontWeight.bold,
             ),

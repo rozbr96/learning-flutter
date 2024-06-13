@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class RememberMe extends StatelessWidget {
@@ -14,9 +15,9 @@ class RememberMe extends StatelessWidget {
           fillColor: const MaterialStatePropertyAll(tertiaryBackgroundColor),
           checkColor: secondaryForegroundColor,
         ),
-        const Text(
-          'Remember-me',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.rememberMe,
+          style: const TextStyle(
             color: tertiaryForegroundColor,
           ),
         ),
