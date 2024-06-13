@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
@@ -33,11 +34,11 @@ class LoginButton extends StatelessWidget {
 
           switch (error) {
             case AuthenticationError _:
-              message = 'Usuário e/ou senha incorreto(s)';
+              message = AppLocalizations.of(context)!.incorrectCredentials;
               break;
 
             default:
-              message = 'Erro ao se conectar com o servidor';
+              message = AppLocalizations.of(context)!.connectionError;
           }
 
           showErrorDialog(context, message: message);
@@ -48,9 +49,9 @@ class LoginButton extends StatelessWidget {
         backgroundColor: MaterialStatePropertyAll(secondaryBackgroundColor),
         foregroundColor: MaterialStatePropertyAll(Colors.black),
       ),
-      child: const Text(
-        'Log In',
-        style: TextStyle(fontWeight: FontWeight.bold),
+      child: Text(
+        AppLocalizations.of(context)!.login,
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }

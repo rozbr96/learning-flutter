@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_flutter/widgets/buttons/language_toggle.dart';
 import 'package:learning_flutter/widgets/forms/login.dart';
 import 'package:learning_flutter/widgets/texts/sign_up.dart';
 
@@ -18,6 +19,7 @@ class LoginScreen extends StatelessWidget {
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            LanguageToggleButton(),
             LoginForm(),
             SignUpText(),
           ],

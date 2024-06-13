@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/widgets/buttons/back.dart';
+import 'package:learning_flutter/widgets/buttons/language_toggle.dart';
 import 'package:learning_flutter/widgets/buttons/notifications.dart';
 import 'package:learning_flutter/widgets/inputs/search.dart';
 import 'package:learning_flutter/widgets/listing/exams.dart';
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [NotificationsButton()],
+        actions: const [LanguageToggleButton(), NotificationsButton()],
         leading: const CustomBackButton(),
         title: const HomeTitleBar(),
         centerTitle: true,
@@ -23,9 +24,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: SearchInput(),
           ),
-          Expanded(
-            child: ExamsListing(),
-          ),
+          Expanded(child: ExamsListing()),
         ],
       ),
     );

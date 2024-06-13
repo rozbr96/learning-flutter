@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class ExamDetailsTitleBar extends StatelessWidget {
@@ -6,9 +7,9 @@ class ExamDetailsTitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'Exam Details',
-      style: TextStyle(
+    return Text(
+      AppLocalizations.of(context)!.examDetails,
+      style: const TextStyle(
         color: primaryForegroundColor,
         fontWeight: FontWeight.bold,
       ),

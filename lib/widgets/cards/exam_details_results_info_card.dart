@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/exam.dart';
 import 'package:learning_flutter/widgets/cards/exam_result.dart';
 import 'package:learning_flutter/widgets/cards/text_plate.dart';
@@ -19,12 +20,12 @@ class ExamDetailsResultsInfoCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 40),
       child: Column(
         children: [
-          const TextPlate(text: 'Analisys'),
+          TextPlate(text: AppLocalizations.of(context)!.analisys),
           const SizedBox(height: 10),
           exam.examResults.isEmpty
-              ? const Text(
-                  'Nenhum teste para o exame especificado',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+              ? Text(
+                  AppLocalizations.of(context)!.noTests,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 )
               : ListView.builder(
                   shrinkWrap: true,

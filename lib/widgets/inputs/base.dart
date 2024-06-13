@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class BaseInputState extends State {
-  final String label;
-  final String hintText;
+  String label;
+  String hintText;
   final bool obscureText;
   Function(String)? onChanged;
 
   BaseInputState({
-    required this.label,
-    required this.hintText,
     this.onChanged,
+    this.label = '',
+    this.hintText = '',
     this.obscureText = false,
   });
 

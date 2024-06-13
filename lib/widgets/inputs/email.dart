@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/widgets/inputs/base.dart';
 import 'package:provider/provider.dart';
 
 class _EmailInputState extends BaseInputState {
-  _EmailInputState() : super(label: 'Email', hintText: 'Email');
+  _EmailInputState();
 
   @override
   void initState() {
@@ -16,6 +17,13 @@ class _EmailInputState extends BaseInputState {
         listen: false,
       ).setEmail(value);
     };
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    label = hintText = AppLocalizations.of(context)!.email;
   }
 }
 
