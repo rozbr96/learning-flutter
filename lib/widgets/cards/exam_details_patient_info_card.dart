@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/models/patient.dart';
 import 'package:learning_flutter/widgets/cards/text_plate.dart';
 
@@ -14,25 +15,25 @@ class ExamDetailsPatientInfoCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 40),
       child: Column(
         children: [
-          const TextPlate(text: 'Patient'),
+          TextPlate(text: AppLocalizations.of(context)!.patient),
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Name',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    AppLocalizations.of(context)!.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'CPF',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    AppLocalizations.of(context)!.cpf,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'Email',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    AppLocalizations.of(context)!.email,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class LoadingDialog extends Dialog {
-  const LoadingDialog({super.key})
+  final BuildContext context;
+
+  LoadingDialog({super.key, required this.context})
       : super.fullscreen(
           backgroundColor: Colors.transparent,
-          child: const Stack(
+          child: Stack(
             children: [
               Center(
                 child: Text(
-                  'Loading...',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.loading,
+                  style: const TextStyle(
                     color: primaryBackgroundColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
                 ),
               ),
-              Center(
+              const Center(
                 child: SizedBox(
                   height: 200,
                   width: 200,

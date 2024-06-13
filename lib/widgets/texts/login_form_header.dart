@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:learning_flutter/utils/colors.dart';
 
 class LoginHeader extends StatelessWidget {
@@ -6,21 +7,19 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Text(
-          'Login',
-          style: TextStyle(
+          AppLocalizations.of(context)!.login,
+          style: const TextStyle(
             color: tertiaryForegroundColor,
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          'Welcome back!',
-          style: TextStyle(
-            color: tertiaryForegroundColor,
-          ),
+          AppLocalizations.of(context)!.welcomeBack,
+          style: const TextStyle(color: tertiaryForegroundColor),
         ),
       ],
     );

@@ -33,7 +33,7 @@ showLoadingDialog(BuildContext context) {
   return showDialog(
     context: context,
     barrierDismissible: false,
-    builder: (context) => const LoadingDialog(),
+    builder: (context) => LoadingDialog(context: context),
     routeSettings: DialogRouteSettings(),
   );
 }
