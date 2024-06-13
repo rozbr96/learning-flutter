@@ -48,9 +48,10 @@ class ExamResultCard extends StatelessWidget {
                   Expanded(
                     flex: 0,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(result.exam_id.toString()),
-                        Text(result.doctor_id.toString()),
+                        Text(result.test_type.name),
+                        Text(result.test_type.reference),
                         Text(result.result),
                       ],
                     ),
