@@ -76,7 +76,6 @@ class API {
       (response) {
         switch (response.statusCode) {
           case 200:
-            debugPrint(response.data.toString());
             return Exam.fromJSON(response.data);
 
           default:
