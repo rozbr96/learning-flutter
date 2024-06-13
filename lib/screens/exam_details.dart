@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/provider/exam.dart';
 import 'package:learning_flutter/widgets/buttons/back.dart';
+import 'package:learning_flutter/widgets/buttons/language_toggle.dart';
 import 'package:learning_flutter/widgets/buttons/notifications.dart';
 import 'package:learning_flutter/widgets/cards/exam_details_doctor_info_card.dart';
 import 'package:learning_flutter/widgets/cards/exam_details_patient_info_card.dart';
@@ -16,7 +17,7 @@ class ExamDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [NotificationsButton()],
+        actions: const [LanguageToggleButton(), NotificationsButton()],
         leading: const CustomBackButton(),
         title: const ExamDetailsTitleBar(),
         centerTitle: true,
