@@ -15,25 +15,29 @@ class ExamDetailsResultsInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TextPlate(text: 'Analisys'),
-        exam.examResults.isEmpty
-            ? const Text(
-                'Nenhum teste para o exame especificado',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )
-            : ListView.builder(
-                shrinkWrap: true,
-                itemCount: exam.examResults.length,
-                itemBuilder: (context, index) {
-                  return ExamResultCard(
-                    exam: exam,
-                    result: exam.examResults[index],
-                  );
-                },
-              )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: Column(
+        children: [
+          const TextPlate(text: 'Analisys'),
+          const SizedBox(height: 10),
+          exam.examResults.isEmpty
+              ? const Text(
+                  'Nenhum teste para o exame especificado',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )
+              : ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: exam.examResults.length,
+                  itemBuilder: (context, index) {
+                    return ExamResultCard(
+                      exam: exam,
+                      result: exam.examResults[index],
+                    );
+                  },
+                )
+        ],
+      ),
     );
   }
 }
