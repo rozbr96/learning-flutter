@@ -1,6 +1,5 @@
 import 'dart:core';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/exam.dart';
 
 class AuthenticationError extends Error {}
@@ -22,7 +21,7 @@ class API {
     _dio = Dio(
       BaseOptions(
         baseUrl: apiHost,
-        validateStatus: (status) => status! < 500,
+        validateStatus: (status) => true,
       ),
     );
   }
@@ -42,12 +41,15 @@ class API {
           break;
 
         case 401:
-          throw AuthenticationError();
+          return Future.error(AuthenticationError());
+
+        default:
+          return Future.error(ConnectionError());
       }
     });
   }
 
-  Future<List<Exam>> listExams() async {
+  Future<List<Exam>> listExams() {
     return _dio
         .get(apiExamsEndpoint, options: Options(headers: _authorizationHeaders))
         .then(
@@ -59,10 +61,10 @@ class API {
                 .toList();
 
           case 401:
-            throw AuthenticationError();
+            return Future.error(AuthenticationError());
 
           default:
-            throw ConnectionError();
+            return Future.error(ConnectionError());
         }
       },
     );
@@ -79,7 +81,7 @@ class API {
             return Exam.fromJSON(response.data);
 
           default:
-            throw ConnectionError();
+            return Future.error(ConnectionError());
         }
       },
     );

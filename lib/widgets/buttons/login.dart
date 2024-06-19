@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:learning_flutter/models/exam.dart';
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
@@ -17,31 +18,41 @@ class LoginButton extends StatelessWidget {
       onPressed: () {
         showLoadingDialog(context);
 
+        API api = API.getInstance();
         Map<String, String> loginData = context.read<LoginModel>().getData();
 
-        API.getInstance().login(loginData).then((_) {
-          return API.getInstance().listExams().then((exams) {
-            context.read<ExamsModel>().setExams(exams);
+        api.login(loginData).then((_) => api.listExams()).then((exams) {
+          context.read<ExamsModel>().setExams(exams);
 
-            dismissDialog(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
-          });
+          dismissDialog(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
         }).catchError((error) {
-          String message;
+          dismissDialog(context);
 
           switch (error) {
             case AuthenticationError _:
-              message = AppLocalizations.of(context)!.incorrectCredentials;
+              showErrorDialog(
+                context,
+                message: AppLocalizations.of(context)!.incorrectCredentials,
+              );
+              break;
+
+            case ConnectionError _:
+              showErrorDialog(
+                context,
+                message: AppLocalizations.of(context)!.connectionError,
+              );
               break;
 
             default:
-              message = AppLocalizations.of(context)!.connectionError;
+              showErrorDialog(
+                context,
+                message: AppLocalizations.of(context)!.error,
+              );
           }
-
-          showErrorDialog(context, message: message);
         });
       },
       style: const ButtonStyle(
