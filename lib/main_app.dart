@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<LoginModel>(create: (_) => LoginModel()),
-        Provider<ExamsModel>(create: (_) => ExamsModel()),
+        ChangeNotifierProvider<ExamsModel>(create: (_) => ExamsModel()),
         Provider<ExamModel>(create: (_) => ExamModel()),
         ChangeNotifierProvider<LocaleModel>(create: (_) => LocaleModel()),
       ],
