@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:learning_flutter/models/exam.dart';
 import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
