@@ -1,22 +1,27 @@
+import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/exam.dart';
 
-class ExamsModel {
+class ExamsModel extends ChangeNotifier {
   List<Exam> _exams = [];
+  List<Exam> _filteredExams = [];
 
-  getExam(index) => _exams[index];
-  getExamsCount() => _exams.length;
+  Exam getExam(index) => _filteredExams[index];
+  List<Exam> getExams() => _filteredExams;
+  getExamsCount() => _filteredExams.length;
 
   setExams(List<Exam> exams) {
-    _exams = exams;
+    _exams = _filteredExams = exams;
   }
 
-  setExamsFromJSON(List json) {
-    _exams = [];
+  filterExams(String filter) {
+    String query = filter.toLowerCase();
 
-    for (var data in json) {
-      Exam exam = Exam.fromJSON(data);
+    _filteredExams = _exams
+        .where((exam) =>
+            exam.lab.name.toLowerCase().contains(query) ||
+            exam.doctor.name.toLowerCase().contains(query))
+        .toList();
 
-      _exams.add(exam);
-    }
+    notifyListeners();
   }
 }
