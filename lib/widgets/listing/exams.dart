@@ -12,7 +12,7 @@ class ExamsListing extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(8),
-      itemCount: context.read<ExamsModel>().getExamsCount(),
+      itemCount: context.watch<ExamsModel>().getExamsCount(),
       itemBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
