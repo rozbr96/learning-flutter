@@ -29,5 +29,6 @@
   "incorrectCredentials": "Usuário e/ou senha incorreto(s)",
   "connectionError": "Erro ao se conectar com o servidor",
   "error": "Erro",
-  "ok": "OK"
+  "ok": "OK",
+  "noExams": "Nenhum exame encontrado"
 }

@@ -29,5 +29,6 @@
   "incorrectCredentials": "User/Password incorrect",
   "connectionError": "Erro connecting to the server",
   "error": "Error",
-  "ok": "OK"
+  "ok": "OK",
+  "noExams": "No exams could be found"
 }
