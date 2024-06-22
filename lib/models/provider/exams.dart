@@ -11,6 +11,8 @@ class ExamsModel extends ChangeNotifier {
 
   setExams(List<Exam> exams) {
     _exams = _filteredExams = exams;
+
+    notifyListeners();
   }
 
   filterExams(String filter) {

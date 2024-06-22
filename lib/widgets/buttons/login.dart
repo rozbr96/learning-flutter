@@ -1,12 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
 import 'package:learning_flutter/utils/api.dart';
 import 'package:learning_flutter/utils/colors.dart';
 import 'package:learning_flutter/utils/dialogs.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key});
@@ -20,8 +22,14 @@ class LoginButton extends StatelessWidget {
         API api = API.getInstance();
         Map<String, String> loginData = context.read<LoginModel>().getData();
 
-        api.login(loginData).then((_) => api.listExams()).then((exams) {
-          context.read<ExamsModel>().setExams(exams);
+        api.login(loginData).then((loggedInData) {
+          SharedPreferences.getInstance().then((prefs) {
+            if (context.read<LoginModel>().shouldKeepConnected()) {
+              prefs.setString('loggedInData', jsonEncode(loggedInData));
+            } else {
+              prefs.remove('loggedInData');
+            }
+          });
 
           dismissDialog(context);
           Navigator.push(

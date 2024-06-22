@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class RememberMe extends StatelessWidget {
   const RememberMe({super.key});
@@ -10,8 +12,10 @@ class RememberMe extends StatelessWidget {
     return Row(
       children: [
         Checkbox(
-          value: true,
-          onChanged: (checked) {},
+          value: context.watch<LoginModel>().shouldKeepConnected(),
+          onChanged: (checked) {
+            context.read<LoginModel>().setRemember(checked ?? false);
+          },
           fillColor: const MaterialStatePropertyAll(tertiaryBackgroundColor),
           checkColor: secondaryForegroundColor,
         ),

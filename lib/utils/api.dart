@@ -28,7 +28,15 @@ class API {
 
   static API getInstance() => _instance ??= API._();
 
-  Future<void> login(loginData) {
+  void setAuthorizationHeaders(Map<String, dynamic> authorizationHeaders) {
+    _authorizationHeaders = {
+      'uid': authorizationHeaders['uid'],
+      'client': authorizationHeaders['client'],
+      'access-token': authorizationHeaders['access-token'],
+    };
+  }
+
+  Future<Map<String, String>> login(loginData) {
     return _dio.post(apiLoginEndpoint, data: loginData).then((response) {
       switch (response.statusCode) {
         case 200:
@@ -38,7 +46,7 @@ class API {
             'access-token': response.headers['access-token']!.first,
           };
 
-          break;
+          return Future.value(_authorizationHeaders);
 
         case 401:
           return Future.error(AuthenticationError());
