@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:learning_flutter/models/provider/exams.dart';
 import 'package:learning_flutter/models/provider/login.dart';
 import 'package:learning_flutter/screens/home.dart';
 import 'package:learning_flutter/utils/api.dart';
 import 'package:learning_flutter/utils/colors.dart';
 import 'package:learning_flutter/utils/dialogs.dart';
+import 'package:learning_flutter/utils/secure_storage.dart';
 import 'package:provider/provider.dart';
 
 class LoginButton extends StatelessWidget {
@@ -17,11 +17,14 @@ class LoginButton extends StatelessWidget {
       onPressed: () {
         showLoadingDialog(context);
 
-        API api = API.getInstance();
         Map<String, String> loginData = context.read<LoginModel>().getData();
 
-        api.login(loginData).then((_) => api.listExams()).then((exams) {
-          context.read<ExamsModel>().setExams(exams);
+        API.getInstance().login(loginData).then((loggedInData) {
+          if (context.read<LoginModel>().shouldKeepConnected()) {
+            SecureStorage.setLoggedInData(loggedInData);
+          } else {
+            SecureStorage.deleteLoggedInData();
+          }
 
           dismissDialog(context);
           Navigator.push(
@@ -55,9 +58,9 @@ class LoginButton extends StatelessWidget {
         });
       },
       style: const ButtonStyle(
-        fixedSize: MaterialStatePropertyAll(Size.fromHeight(45)),
-        backgroundColor: MaterialStatePropertyAll(secondaryBackgroundColor),
-        foregroundColor: MaterialStatePropertyAll(Colors.black),
+        fixedSize: WidgetStatePropertyAll(Size.fromHeight(45)),
+        backgroundColor: WidgetStatePropertyAll(secondaryBackgroundColor),
+        foregroundColor: WidgetStatePropertyAll(Colors.black),
       ),
       child: Text(
         AppLocalizations.of(context)!.login,
