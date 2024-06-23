@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/utils/colors.dart';
+import 'package:learning_flutter/utils/secure_storage.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
@@ -15,6 +16,10 @@ class CustomBackButton extends StatelessWidget {
       ),
       onPressed: () {
         Navigator.pop(context);
+
+        if (!Navigator.canPop(context)) {
+          SecureStorage.deleteLoggedInData();
+        }
       },
     );
   }
