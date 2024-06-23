@@ -16,7 +16,7 @@ class RememberMe extends StatelessWidget {
           onChanged: (checked) {
             context.read<LoginModel>().setRemember(checked ?? false);
           },
-          fillColor: const MaterialStatePropertyAll(tertiaryBackgroundColor),
+          fillColor: const WidgetStatePropertyAll(tertiaryBackgroundColor),
           checkColor: secondaryForegroundColor,
         ),
         Text(

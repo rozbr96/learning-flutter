@@ -11,7 +11,7 @@ class CustomBackButton extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.keyboard_arrow_left),
       style: const ButtonStyle(
-        iconColor: MaterialStatePropertyAll(primaryBackgroundColor),
+        iconColor: WidgetStatePropertyAll(primaryBackgroundColor),
       ),
       onPressed: () {
         Navigator.pop(context);

@@ -87,21 +87,21 @@ class ExamBriefCard extends StatelessWidget {
                       onPressed: () {},
                       style: const ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(primaryForegroundColor),
+                            WidgetStatePropertyAll(primaryForegroundColor),
                       ),
                       child: Text(AppLocalizations.of(context)!.create)),
                   FilledButton(
                       onPressed: () {},
                       style: const ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(primaryForegroundColor),
+                            WidgetStatePropertyAll(primaryForegroundColor),
                       ),
                       child: Text(AppLocalizations.of(context)!.create)),
                   FilledButton(
                       onPressed: () {},
                       style: const ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(primaryForegroundColor),
+                            WidgetStatePropertyAll(primaryForegroundColor),
                       ),
                       child: Text(AppLocalizations.of(context)!.create)),
                 ],
@@ -131,9 +131,9 @@ class ExamBriefCard extends StatelessWidget {
                       },
                       style: const ButtonStyle(
                         foregroundColor:
-                            MaterialStatePropertyAll(primaryForegroundColor),
+                            WidgetStatePropertyAll(primaryForegroundColor),
                         backgroundColor:
-                            MaterialStatePropertyAll(tertiaryBackgroundColor),
+                            WidgetStatePropertyAll(tertiaryBackgroundColor),
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.details,
@@ -149,9 +149,9 @@ class ExamBriefCard extends StatelessWidget {
                     icon: const Icon(Icons.download),
                     style: const ButtonStyle(
                       foregroundColor:
-                          MaterialStatePropertyAll(primaryForegroundColor),
+                          WidgetStatePropertyAll(primaryForegroundColor),
                       backgroundColor:
-                          MaterialStatePropertyAll(tertiaryBackgroundColor),
+                          WidgetStatePropertyAll(tertiaryBackgroundColor),
                     ),
                   ),
                 ],

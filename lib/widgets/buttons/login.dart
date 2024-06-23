@@ -58,9 +58,9 @@ class LoginButton extends StatelessWidget {
         });
       },
       style: const ButtonStyle(
-        fixedSize: MaterialStatePropertyAll(Size.fromHeight(45)),
-        backgroundColor: MaterialStatePropertyAll(secondaryBackgroundColor),
-        foregroundColor: MaterialStatePropertyAll(Colors.black),
+        fixedSize: WidgetStatePropertyAll(Size.fromHeight(45)),
+        backgroundColor: WidgetStatePropertyAll(secondaryBackgroundColor),
+        foregroundColor: WidgetStatePropertyAll(Colors.black),
       ),
       child: Text(
         AppLocalizations.of(context)!.login,
