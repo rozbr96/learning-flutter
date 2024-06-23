@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/screens/home.dart';
 import 'package:learning_flutter/utils/api.dart';
+import 'package:learning_flutter/utils/secure_storage.dart';
 import 'package:learning_flutter/widgets/buttons/language_toggle.dart';
 import 'package:learning_flutter/widgets/forms/login.dart';
 import 'package:learning_flutter/widgets/texts/sign_up.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class _LoginScreen extends StatelessWidget {
   const _LoginScreen();
@@ -42,9 +42,7 @@ class _LoginScreenState extends State<StatefulWidget> {
   void initState() {
     super.initState();
 
-    SharedPreferences.getInstance().then((prefs) {
-      String? stringfiedLoggedInData = prefs.getString('loggedInData');
-
+    SecureStorage.getLoggedInData().then((stringfiedLoggedInData) {
       if (stringfiedLoggedInData != null) {
         Map<String, dynamic> loggedInData = jsonDecode(stringfiedLoggedInData);
         API.getInstance().setAuthorizationHeaders(loggedInData);
