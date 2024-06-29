@@ -5,7 +5,7 @@ import 'package:learning_flutter/models/patient.dart';
 
 class Exam {
   int id;
-  String date;
+  DateTime date;
   Lab lab;
   Doctor doctor;
   Patient patient;
@@ -17,7 +17,7 @@ class Exam {
   Exam.fromJSON(Map<String, dynamic> json)
       : this(
           json['id'],
-          json['date'],
+          DateTime.parse(json['date']),
           Lab.fromJSON(json['lab']),
           Doctor.fromJSON(json['doctor']),
           Patient.fromJSON(json['patient']),
@@ -27,8 +27,4 @@ class Exam {
                   .toList()
               : [],
         );
-
-  String formattedDate() {
-    return date.split('-').reversed.join('/');
-  }
 }
