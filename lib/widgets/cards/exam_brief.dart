@@ -35,7 +35,7 @@ class ExamBriefCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    exam.formattedDate(),
+                    AppLocalizations.of(context)!.date(exam.date),
                     style: const TextStyle(
                       color: primaryForegroundColor,
                       fontWeight: FontWeight.w500,

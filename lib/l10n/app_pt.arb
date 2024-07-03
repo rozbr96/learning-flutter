@@ -30,5 +30,14 @@
   "connectionError": "Erro ao se conectar com o servidor",
   "error": "Erro",
   "ok": "OK",
-  "noExams": "Nenhum exame encontrado"
+  "noExams": "Nenhum exame encontrado",
+  "date": "{date}",
+  "@date": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "MMMMEEEEd"
+      }
+    }
+  }
 }
