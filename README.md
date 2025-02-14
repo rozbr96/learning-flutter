@@ -1,16 +1,5 @@
 # learning_flutter
 
-A new Flutter project.
+As the name suggests, it was developed as learning purposes, and here is the current state:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Trilha Flutter - Preview.webm](https://github.com/user-attachments/assets/cb3a6955-3ccc-453f-892a-93acce5a4643)
